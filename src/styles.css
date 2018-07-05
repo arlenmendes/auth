@@ -1,1 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #D9E5D6;
+}
+
+.wrapper {
+  margin: 0 0 0 200px;
+  min-height: 100vh;
+  padding: 80px 0 0 0;
+}
+
+.secao {
+  width: 100%;
+  display: inline-block;
+  background: white;
+  min-height: 350px;
+  border-radius: 5px;
+}
+
+.secao-header {
+  background: #656C7D;
+  padding: 25px 40px;
+  color: white;
+  border-radius: 5px 5px 0 0;
+}
+
+.secao-body {
+  width: 100%;
+  padding: 20px 40px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.card {
+  margin: 15px;
+}
+/*.secao-flex {*/
+  /*display: flex;*/
+  /*flex-flow: row wrap;*/
+
+/*}*/
+
+/*.secao-flex .card {*/
+  /*justify-content: space-around;*/
+/*}*/

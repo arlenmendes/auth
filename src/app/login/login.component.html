@@ -1,0 +1,20 @@
+<div class="container login-container">
+  <div class="login-box">
+    <h1>SAQ 360</h1>
+    <h3>Login</h3>
+    <form novalidate [formGroup]="formularioLogin">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="E-mail" formControlName="email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Senha" formControlName="senha">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="logar(formularioLogin.value)" [disabled]="formularioLogin.invalid || carregando"><span *ngIf="!carregando">Entrar</span><span *ngIf="carregando" class="material-icons animate">autorenew</span></button>
+      </div>
+    </form>
+    <div class="alert alert-danger" role="alert" *ngIf="mensagem_erro">
+      {{ mensagem }}
+    </div>
+  </div>
+</div>

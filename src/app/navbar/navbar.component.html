@@ -1,0 +1,11 @@
+<div *ngIf="logado" class="app-nav">
+  <div class="sidebar-header">
+    <h5>{{ usuarioPrimeiroNome() }}</h5>
+    <p>{{ usuarioFuncao() }}</p>
+  </div>
+  <ul>
+    <li><a routerLink="/avaliacoes" routerLinkActive="ativo" >Avaliações</a></li>
+    <li><a routerLink="/avaliacoes2" routerLinkActive="ativo" >Avaliações</a></li>
+    <li><a routerLink="/colaboradores" routerLinkActive="ativo" >Colaboradores</a></li>
+  </ul>
+</div>

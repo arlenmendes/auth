@@ -1,0 +1,51 @@
+<div class="wrapper">
+  <div class="container">
+    <h2>Avaliações</h2>
+    <p>Todas as Avaliações na qual você faz parte.</p>
+    <div class="secao">
+      <div class="secao-header">
+        <b>Avaliador</b>
+      </div>
+      <div class="secao-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Data Final</th>
+              <th>Situação</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let avaliacao of avaliacoes">
+              <td>{{ avaliacao.titulo }}</td>
+              <td>{{ avaliacao.dataFinal }}</td>
+              <td>{{ situacao(avaliacao) }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="setAvaliacaoModal(avaliacao)" data-toggle="modal" data-target="#modal">Mais</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--Modal-->
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel">{{ avaliacaoModal.titulo }}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Data Final: <b>{{avaliacaoModal.dataFinal}}</b></p>
+          <p>Descrição: <b>{{ avaliacaoModal.descricao }}</b></p>
+          <p>Situação: <b>{{ situacao(avaliacaoModal) }}</b></p>
+          <p>Data Criação: <b>{{ avaliacaoModal.dataCriacao }}</b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

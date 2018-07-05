@@ -1,0 +1,40 @@
+.app-nav {
+  position: fixed;
+  top: 56px;
+  background: #2C3E50;
+  width: 200px;
+  height: calc(100vh - 56px);
+  color: white;
+}
+
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  background: #22303E;
+  height: auto;
+}
+
+.app-nav ul {
+  list-style-type: none;
+  width: 100%;
+  padding: 15px 0 0 0;
+  text-align: center;
+}
+
+a{
+  margin: 5px 0;
+  display: inline-block;
+  color: white;
+  padding: 10px;
+  width: 100%;
+}
+a:link {
+  text-decoration: none;
+}
+
+a:hover, .ativo {
+  color: #1B2224;
+  background: white;
+  transition: 200ms;
+}
