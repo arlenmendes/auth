@@ -3,9 +3,9 @@
     <h5>{{ usuarioPrimeiroNome() }}</h5>
     <p>{{ usuarioFuncao() }}</p>
   </div>
-  <ul>
-    <li><a routerLink="/avaliacoes" routerLinkActive="ativo" >Avaliações</a></li>
-    <li><a routerLink="/avaliacoes2" routerLinkActive="ativo" >Avaliações</a></li>
-    <li><a routerLink="/colaboradores" routerLinkActive="ativo" >Colaboradores</a></li>
+  <ul id="lista-cliente" *ngIf="!isAdmin()">
+  </ul>
+  <ul id="lista-administrador" *ngIf="isAdmin()">
+    <li><a routerLink="/administrador/clientes" routerLinkActive="active">Clientes</a></li>
   </ul>
 </div>

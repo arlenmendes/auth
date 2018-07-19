@@ -9,7 +9,7 @@ import {UsuarioService} from './usuario/usuario.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
+  logado: boolean;
   constructor(
     private router: Router,
     private loginService: LoginService,
@@ -19,7 +19,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.usuarioService.carregadoEmissor.subscribe(valor => {
+      this.logado = valor;
+    });
+
     if (localStorage.getItem('token') != null) {
+      this.usuarioService.carregaUsuario();
       this.loginService.validarToken();
     } else {
       this.router.navigate(['login']);

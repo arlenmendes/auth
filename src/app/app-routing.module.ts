@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import {LoginService} from './login/login.service';
-import {AvaliacaoComponent} from './avaliacao/avaliacao.component';
-import {AuthGuardService} from './services/auth-guard.service';
-import {ColaboradoresComponent} from './colaboradores/colaboradores.component';
+import { AdministradorModule } from './administrador/administrador.module';
+import { ClienteModule } from './cliente/cliente.module';
+import {AuthGuardAdministradorService} from './services/auth-guard-administrador.service';
+import {AuthGuardClienteService} from './services/auth-guard-cliente.service';
 
 const ROUTES: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'avaliacoes', component: AvaliacaoComponent, canActivate: [AuthGuardService] },
-  { path: 'avaliacoes2', component: AvaliacaoComponent, canActivate: [AuthGuardService] },
-  { path: 'colaboradores', component: ColaboradoresComponent, canActivate: [AuthGuardService] },
+  { path: 'administrador', loadChildren: () => AdministradorModule, canActivate: [AuthGuardAdministradorService] },
+  { path: 'cliente', loadChildren: () => ClienteModule, canActivate: [AuthGuardClienteService] },
 ];
 
 @NgModule({

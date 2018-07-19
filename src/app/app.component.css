@@ -1,1 +1,20 @@
+/*.main {*/
+  /*margin-top: 70px;*/
+  /*padding-left: 330px;*/
+  /*color: #1B2224;*/
+/*}*/
 
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+navbar {
+  width: 300px;
+}
+
+.conteudo {
+  margin-top: 56px;
+  padding: 0 40px;
+  flex-grow: 1;
+}

@@ -20,7 +20,7 @@ export class LoginService {
   }
 
   async validarToken() {
-    const options = {'Content-type': 'application/json'}
+    const options = {'Content-type': 'application/json'};
     await this.http.get(this.hostapi + '/validar-token', options).toPromise().then(res => {
       this.usuarioService.carregaUsuario();
 

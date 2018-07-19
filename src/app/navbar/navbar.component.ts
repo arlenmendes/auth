@@ -32,4 +32,8 @@ export class NavbarComponent implements OnInit {
     return this.usuarioService.getFuncao();
   }
 
+  isAdmin() {
+    return this.usuarioService.isAdmin();
+  }
+
 }

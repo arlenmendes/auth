@@ -1,0 +1,23 @@
+<!--<div *ngFor="let cliente of clientes | async ">-->
+  <!--{{ cliente.nome }}-->
+<!--</div>-->
+<table class="table">
+  <thead>
+  <tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th>CNPJ</th>
+    <th>Ação</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cliente of clientes | async">
+    <th>{{cliente.id}}</th>
+    <th>{{cliente.nome}}</th>
+    <th>{{cliente.cnpj}}</th>
+    <th>
+      <app-cliente-form [cliente]="cliente"></app-cliente-form>
+    </th>
+  </tr>
+  </tbody>
+</table>

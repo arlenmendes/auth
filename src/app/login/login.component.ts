@@ -30,7 +30,12 @@ export class LoginComponent implements OnInit {
     const token = localStorage.getItem('token');
 
     if (token) {
-      this.router.navigate(['/avaliacoes']);
+
+      if (this.usuarioService.isAdmin()) {
+        this.router.navigate(['administrador']);
+      } else {
+        this.router.navigate(['cliente']);
+      }
     }
   }
 
@@ -43,12 +48,13 @@ export class LoginComponent implements OnInit {
 
     await this.loginService.logar(dados).subscribe(response => {
       localStorage.setItem('token', response.token);
-      localStorage.setItem('usuarioNome', response.nome);
-      localStorage.setItem('usuarioId', response.id);
-      localStorage.setItem('usuarioFuncao', response.funcao);
-      console.log('sw')
+      localStorage.setItem('usuario', JSON.stringify(response.usuario));
       this.usuarioService.carregaUsuario();
-      this.router.navigate(['/avaliacoes']);
+      if (this.usuarioService.isAdmin()) {
+        this.router.navigate(['administrador']);
+      } else {
+        this.router.navigate(['cliente']);
+      }
     }, err => {
       this.mensagem = err.error;
       this.mensagem_erro = true;

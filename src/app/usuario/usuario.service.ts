@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Usuario} from './usuario.model';
 import {BehaviorSubject, Observable} from 'rxjs';
 
@@ -15,9 +15,13 @@ export class UsuarioService {
 
   carregaUsuario() {
     this.usuario = new Usuario;
-    this.usuario.id = localStorage.getItem('usuarioId');
-    this.usuario.nome = localStorage.getItem('usuarioNome');
-    this.usuario.funcao = localStorage.getItem('usuarioFuncao');
+
+    const dados = JSON.parse(localStorage.getItem('usuario'));
+
+    this.usuario.id = dados.id;
+    this.usuario.nome = dados.nome;
+    this.usuario.funcao = dados.funcao;
+    this.usuario.admin = dados.admin;
     this._carregado.next(true);
   }
 
@@ -40,5 +44,9 @@ export class UsuarioService {
 
   getId() {
     return this.usuario.id;
+  }
+
+  isAdmin() {
+    return this.usuario.admin;
   }
 }
