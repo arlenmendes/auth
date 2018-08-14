@@ -15,13 +15,12 @@ export class LoginService {
     private usuarioService: UsuarioService
   ) { }
 
-  logar(dados: {email: string, senha: string}) {
-    return this.http.post(this.hostapi + '/login', dados);
+  logar(dados: {login: string, senha: string}) {
+    return this.http.post(this.hostapi + '/auth/login', dados);
   }
 
   async validarToken() {
-    const options = {'Content-type': 'application/json'};
-    await this.http.get(this.hostapi + '/validar-token', options).toPromise().then(res => {
+    await this.http.get(this.hostapi + '/auth/validar-token').toPromise().then(res => {
       this.usuarioService.carregaUsuario();
 
     }, err => {

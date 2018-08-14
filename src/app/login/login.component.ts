@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LoginService} from './login.service';
 import {Router} from '@angular/router';
 import {UsuarioService} from '../usuario/usuario.service';
+import {RespostaLogin} from './resposta-login.model';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formularioLogin = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      login: ['', [Validators.required]],
       senha: ['', [Validators.required]]
     });
     const token = localStorage.getItem('token');
@@ -41,12 +42,12 @@ export class LoginComponent implements OnInit {
 
   async logar(form: any) {
     const dados = {
-      email: form.email,
+      login: form.login,
       senha: form.senha
     };
     this.carregando = true;
 
-    await this.loginService.logar(dados).subscribe(response => {
+    await this.loginService.logar(dados).subscribe((response: RespostaLogin)  => {
       localStorage.setItem('token', response.token);
       localStorage.setItem('usuario', JSON.stringify(response.usuario));
       this.usuarioService.carregaUsuario();
@@ -56,7 +57,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['cliente']);
       }
     }, err => {
-      this.mensagem = err.error;
+      console.log(err);
+      this.mensagem = err.error.mensagem;
       this.mensagem_erro = true;
       this.carregando = false;
     });

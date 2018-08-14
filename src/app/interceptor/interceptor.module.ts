@@ -24,7 +24,7 @@ export class HttpsRequestInterceptor implements HttpInterceptor {
 
     if (localStorage.getItem('token') != null) {
       const requestModificada = req.clone({
-        headers: req.headers.set('token', localStorage.getItem('token')),
+        headers: req.headers.set('Accept', 'beaver ' + localStorage.getItem('token')),
       });
       return next
         .handle(requestModificada)
